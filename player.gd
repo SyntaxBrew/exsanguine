@@ -1,7 +1,10 @@
 extends CharacterBody2D
 
-@export var speed = 200
+@export var speed = 50
 var screen_size
+
+@export var max_health = 100
+@export var health = 100
 
 func _ready():
 	screen_size = get_viewport_rect().size
@@ -17,9 +20,12 @@ func _process(delta):
 		direction.y += 1
 	if Input.is_action_pressed("move_left"):
 		direction.x -= 1
-		
-	direction = direction.normalized()
-	var velocity = direction * speed * delta
-	position = (position + velocity).clamp(Vector2.ZERO, screen_size)
+
+	velocity = direction.normalized() * speed
+	
+	if velocity.x != 0:
+		$AnimatedSprite2D.flip_h = velocity.x < 0
+	
+	move_and_slide()
 	
 	
