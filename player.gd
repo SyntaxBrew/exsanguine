@@ -27,5 +27,3 @@ func _process(delta):
 		$AnimatedSprite2D.flip_h = velocity.x < 0
 	
 	move_and_slide()
-	
-	

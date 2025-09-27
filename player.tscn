@@ -44,8 +44,6 @@ radius = 8.0
 height = 20.0
 
 [node name="Player" type="CharacterBody2D"]
-position = Vector2(0, -5)
-scale = Vector2(0.5, 0.5)
 script = ExtResource("1_onrkg")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
@@ -53,7 +51,7 @@ scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_1jxqw")
 animation = &"idle"
 autoplay = "idle"
-frame_progress = 0.9263739
+frame_progress = 0.32280657
 
 [node name="Hitbox" type="CollisionShape2D" parent="."]
 position = Vector2(0, 8)

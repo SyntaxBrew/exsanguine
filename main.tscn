@@ -1,5 +1,6 @@
-[gd_scene load_steps=5 format=4 uid="uid://bd0addve0lcw1"]
+[gd_scene load_steps=6 format=4 uid="uid://bd0addve0lcw1"]
 
+[ext_resource type="Script" uid="uid://6f4pq0gco2r7" path="res://main.gd" id="1_h2yge"]
 [ext_resource type="PackedScene" uid="uid://kmv1o2l3necm" path="res://player.tscn" id="1_ig7tw"]
 [ext_resource type="Texture2D" uid="uid://df4bdhlqig8wj" path="res://tilemap.png" id="2_0xm2m"]
 
@@ -622,6 +623,7 @@ physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_0xm2m")
 
 [node name="Main" type="Node"]
+script = ExtResource("1_h2yge")
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
 position = Vector2(-214, -287)
@@ -630,3 +632,18 @@ tile_set = SubResource("TileSet_h2yge")
 
 [node name="Player" parent="." instance=ExtResource("1_ig7tw")]
 position = Vector2(228, 87)
+scale = Vector2(0.5, 0.5)
+
+[node name="HUD" type="CanvasLayer" parent="."]
+
+[node name="Health" type="Label" parent="HUD"]
+offset_left = 8.0
+offset_top = 595.0
+offset_right = 183.0
+offset_bottom = 640.0
+theme_override_font_sizes/font_size = 32
+text = "Health: 100"
+
+[node name="DamageTimer" type="Timer" parent="."]
+
+[connection signal="timeout" from="DamageTimer" to="." method="_on_damage_timer_timeout"]
