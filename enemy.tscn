@@ -1,0 +1,30 @@
+[gd_scene load_steps=5 format=3 uid="uid://c38g0ccncvvue"]
+
+[ext_resource type="Script" path="res://enemy.gd" id="1_4gyqm"]
+[ext_resource type="Texture2D" uid="uid://dc0m42pa3rtb7" path="res://creep.png" id="1_7k104"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_7xaro"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_7k104")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_7k104"]
+
+[node name="Enemy" type="CharacterBody2D" groups=["enemies"]]
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("1_4gyqm")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_7xaro")
+animation = &"idle"
+
+[node name="Hitbox" type="CollisionShape2D" parent="."]
+scale = Vector2(0.4, 0.4)
+shape = SubResource("CapsuleShape2D_7k104")
