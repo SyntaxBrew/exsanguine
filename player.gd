@@ -1,4 +1,8 @@
 extends CharacterBody2D
+class_name Player
+signal HealthChanged
+
+@export var health_label: Label
 
 @export var speed = 50
 var screen_size
@@ -9,8 +13,15 @@ var screen_size
 func _ready():
 	screen_size = get_viewport_rect().size
 	print("Player Loaded")
-	
+
+func _on_damage_timer_timeout():
+	health -= 1
+	HealthChanged.emit()
+
 func _process(delta):
+	health_label.text = "Health: " + str(health)
+	
+	
 	var direction = Vector2.ZERO
 	if Input.is_action_pressed("move_up"):
 		direction.y -= 1
