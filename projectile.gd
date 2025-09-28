@@ -14,8 +14,6 @@ func _process(delta):
 		queue_free()
 
 func _on_body_entered(body):
-	print(body)
 	if body.has_method("take_damage"):
-		print("hi")
 		body.take_damage(damage)
 		queue_free()
