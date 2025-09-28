@@ -16,6 +16,13 @@ var target: Node = null
 func _ready():
 	screen_size = get_viewport_rect().size
 	print(target)
+
+func take_damage(amount):
+	health -= amount
+	print("Enemy hit! Health now: ", health)
+	if health <= 0:
+		queue_free()  # destroy enemy when dead
+
 	
 func _physics_process(delta):
 	var change_pos = (target.position - position)
