@@ -38,6 +38,11 @@ func shoot_projectile():
 		# rotate the projectile to face that direction
 		projectile.rotation = projectile.direction.angle()
 
+func heal(amount):
+	health += amount
+	if health > max_health:
+		health = max_health
+
 func _process(delta):
 	HealthChanged.emit()
 	health_label.text = "Health: " + str(health)
