@@ -3,8 +3,8 @@ extends CharacterBody2D
 @export var speed = 25
 var screen_size
 
-@export var max_health = 100
-@export var health = 100
+@export var max_health = 50
+@export var health = 50
 
 @export var attack_range = 25
 @export var attack_damage = 5
@@ -17,11 +17,9 @@ var target: Node = null
 
 func _ready():
 	screen_size = get_viewport_rect().size
-	print(target)
 
 func take_damage(amount):
 	health -= amount
-	print("Enemy hit! Health now: ", health)
 	if health <= 0:
 		spawn_blood()
 		queue_free()  # destroy enemy when dead
@@ -53,6 +51,7 @@ func _process(delta):
 	if cooldown_timer >= attack_cooldown:
 		cooldown_timer = 0
 		if is_player_in_range():
-			target.health -= attack_damage
+			target.take_damage(attack_damage)
 		
-	
+func KillAll():
+	queue_free()

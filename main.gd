@@ -7,9 +7,18 @@ func _ready():
 	
 func _process(delta):
 	if $Player.health <= 0:
-		get_tree().quit(0)
-	$HUD/Health.text = "Health: " + str($Player.health)
+		$HUD/ColorRect.visible = true
+		$HUD/Health.visible = false
+		$HUD/ProgressBar.visible = false
+		
+	$HUD/Health.text = str($Player.health) + "/" + str($Player.max_health)
 	$HUD/ProgressBar.value = $Player.health * 100 / $Player.max_health
+
+func restart():
+	get_tree().reload_current_scene()
+
+func quit():
+	get_tree().quit(0)
 	
 func spawn_enemy():
 	var enemy = enemy_scene.instantiate()

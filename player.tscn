@@ -1,7 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://kmv1o2l3necm"]
+[gd_scene load_steps=10 format=3 uid="uid://kmv1o2l3necm"]
 
 [ext_resource type="Script" uid="uid://76ggtknncl86" path="res://player.gd" id="1_onrkg"]
 [ext_resource type="Texture2D" uid="uid://dj3n8srd1mv5f" path="res://mage_sprites.png" id="2_onrkg"]
+[ext_resource type="Texture2D" uid="uid://desuhw7y0vxfd" path="res://shield.png" id="3_i3pqv"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_i3pqv"]
 atlas = ExtResource("2_onrkg")
@@ -45,6 +46,7 @@ height = 20.0
 
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_onrkg")
+shield_duration = 5
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(2, 2)
@@ -63,3 +65,9 @@ scale = Vector2(0.5, 0.5)
 zoom = Vector2(4, 4)
 position_smoothing_enabled = true
 position_smoothing_speed = 10.0
+
+[node name="Shield" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(0, 7.0000005)
+scale = Vector2(1.6944444, 1.7222222)
+texture = ExtResource("3_i3pqv")
